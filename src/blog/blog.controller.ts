@@ -8,10 +8,10 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { CreateBlogDto } from './request/create-blog.dto';
-import { UpdateBlogDto } from './request/update-blog.dto';
+import { CreateBlogDto } from './dto/request/create-blog.dto';
+import { UpdateBlogDto } from './dto/request/update-blog.dto';
 import { BlogService } from './blog.service';
-import { BlogDto } from 'src/interfaces/blog.interface';
+import { BlogDto } from 'src/blog/interface/blog.interface';
 
 @Controller('blog')
 export class BlogController {
