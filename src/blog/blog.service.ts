@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { BlogDto } from 'src/blog/interface/blog.interface';
 import { CreateBlogDto } from './dto/request/create-blog.dto';
 import { UpdateBlogDto } from './dto/request/update-blog.dto';
@@ -14,7 +14,8 @@ export class BlogService {
   }
 
   findAll(): BlogDto[] {
-    return this.blogs;
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    // return this.blogs;
   }
 
   findOne(id: number): BlogDto | undefined {
