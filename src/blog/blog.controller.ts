@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
@@ -31,20 +32,20 @@ export class BlogController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): BlogDto | undefined {
-    return this.blogService.findOne(Number(id));
+  findOne(@Param('id', ParseIntPipe) id: number): BlogDto | undefined {
+    return this.blogService.findOne(id);
   }
 
   @Put('update/:id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateBlogDto: UpdateBlogDto,
   ): string {
-    this.blogService.update(Number(id), updateBlogDto);
+    this.blogService.update(id, updateBlogDto);
     return `This action updates a #${id} blog`;
   }
   @Delete('delete/:id')
-  delete(@Param('id') id: string): void {
-    this.blogService.delete(Number(id));
+  delete(@Param('id', ParseIntPipe) id: number): void {
+    this.blogService.delete(id);
   }
 }
