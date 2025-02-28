@@ -14,8 +14,7 @@ export class BlogService {
   }
 
   findAll(): BlogDto[] {
-    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
-    // return this.blogs;
+    return this.blogs;
   }
 
   findOne(id: number): BlogDto | undefined {

@@ -13,12 +13,13 @@ import { CreateBlogDto } from './dto/request/create-blog.dto';
 import { UpdateBlogDto } from './dto/request/update-blog.dto';
 import { BlogService } from './blog.service';
 import { BlogDto } from 'src/blog/interface/blog.interface';
-
+import { Roles } from 'src/roles/roles.decorator';
 @Controller('blog')
 export class BlogController {
   constructor(private blogService: BlogService) {}
 
   @Post('store')
+  @Roles(['admin'])
   create(@Body() createBlogDto: CreateBlogDto): string {
     this.blogService.create(createBlogDto);
     return `This action adds a new blog with name:  ${createBlogDto?.name}`;
